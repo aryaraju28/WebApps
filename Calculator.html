@@ -1,0 +1,74 @@
+<html>
+<head> <link rel="stylesheet" type="text/css" href="Calculator.css">   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<body>
+    <div class="login-box">
+<table id="myTable">
+<tr>   <th width="100">Subject</th>
+    <th>Mark</th>
+</tr>
+
+<tr>
+    <td><span>Malayalam </span></td>
+    <td><input type="text" class='txtCal' /></td>
+</tr>  
+<tr>
+    <td><span>English </span></td>
+    <td><input type="text" class='txtCal' /></td>
+</tr>  
+<tr>
+    <td><span>Maths </span></td>
+    <td><input type="text" class='txtCal' /></td>
+</tr>  
+
+<tr>
+    <td><span><b>TOTAL  </b></span></td>
+    
+    <td><b><span id="total_sum_value"></span></b></td>
+</tr>
+<tr>
+    
+    <td><span><b>AVERAGE </b></span></td>
+    <td><b><span id="total_average_value"></span></b></td>
+</tr>
+</tr>
+</table>
+
+
+<script>
+$(document).ready(function(){
+
+	
+$("#myTable").on('input', '.txtCal', function () {
+       var calculated_total_sum = 0;
+     
+       $("#myTable .txtCal").each(function () {
+           var get_textbox_value = $(this).val();
+           if ($.isNumeric(get_textbox_value)) {
+              calculated_total_sum += parseFloat(get_textbox_value);
+              }                  
+            });
+              $("#total_sum_value").html(calculated_total_sum);
+       });
+
+
+$("#myTable").on('input', '.txtCal', function () {
+       var calculated_average= 0;
+     
+       $("#myTable .txtCal").each(function () {
+           var get_textbox_value= $(this).val();
+           if ($.isNumeric(get_textbox_value)) {
+              calculated_average+= parseFloat(get_textbox_value/3);
+              }                  
+            });
+              $("#total_average_value").html(calculated_average);
+       });
+
+});
+
+</script>
+    </div>
+</body>
+</html>
+   

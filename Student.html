@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Student MarkSheet</title>  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="Student.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      //iterate through each textboxes
+      $('.txtMarks').each(function () {
+        
+        // call 'calcSumAndAverage' method on keyup handler.
+        $(this).keyup(function () {
+          calcSumAndAverage();
+        });
+      });
+    });
+    
+    function calcSumAndAverage() {
+      var total = 0;
+      var average = 0;
+      
+      //iterate through each textboxes with class name '.txtMarks' 
+      //and add the values.
+      $('.txtMarks').each(function () {
+        
+        //add only if the value is number
+        if (!isNaN(this.value) && this.value.length != 0) {
+          total += parseFloat(this.value);
+        }
+      });
+      
+      //Calculate the Average
+      if (!isNaN(total) && total != 0) {
+        
+        //Get count of textboxes with class '.txtMarks'
+        var txtboxes = $('.txtMarks').length;
+        average = parseFloat(total) / txtboxes;
+      }
+      
+      //Show Total Marks.
+      $('#totalMarks').html(total);
+      // Show Average upto 2 decimal places using .toFixed() method.
+      $('#average').html(average.toFixed(2));
+    }
+  </script>
+</head>
+<table class="mark-table">
+    <tr class="label">
+    <td colspan="2">Please enter marks(0-99):</td>
+    </tr>
+      <tr>
+          <td>English</td>
+          <td>
+              <input type="text" class="txtMarks" name="txtMarks" maxlength="2" /></td>
+      </tr>
+      <tr>
+          <td>Hindi</td>
+          <td>
+              <input type="text" class="txtMarks" name="txtMarks" maxlength="2" /></td>
+      </tr>
+      <tr>
+          <td>Maths</td>
+          <td>
+              <input type="text" class="txtMarks" name="txtMarks" maxlength="2" /></td>
+      </tr>
+      <tr>
+          <td>Science</td>
+          <td>
+              <input type="text" class="txtMarks" name="txtMarks" maxlength="2" /></td>
+      </tr>
+      <tr>
+          <td>Social Science</td>
+          <td>
+              <input type="text" class="txtMarks" name="txtMarks" maxlength="2" /></td>
+      </tr>
+      <tr class="label">
+          <td class="right">Total Marks :</td>
+          <td class="center"><span id="totalMarks">0</span></td>
+      </tr>
+      <tr class="label">
+          <td class="right">Average     :</td>
+          <td class="center"><span id="average">0</span></td>
+      </tr>
+  </table>
+</head>
+</html>
