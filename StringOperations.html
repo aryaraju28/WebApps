@@ -11,21 +11,22 @@
             {
            $("#name").keyup(function()
            {
-                var string=$("#name").val();
+            var string=$("#name").val();
                 var rev=string.split('').reverse().join('');
                 $('#reverse').html(rev);
                 var len=($('#name').val().length);
                 $('#Stringlength').html(len);
                 var FirstLetter=string.charAt(0).toUpperCase();//upercase first letter
-                var s = string.slice(1,len-1);// remove remaining character
+                var stringslice = string.slice(1,len-2,len-1);// remove remaining character //remove 1st , second last and last character from string.
         
-                var a = FirstLetter+s;// concat
+                var append = FirstLetter+stringslice;// concat 
                 var last = string.charAt(len-1).toUpperCase();
                 
-                var slast=string.charAt(len-2) .toUpperCase();
+                var secondlast=string.charAt(len-2) .toUpperCase();
                 
-                var b = a+slast+last;              
-                $("#capital").html(b);
+                var concat = append+secondlast+last;              
+                             
+                $("#capital").html(concat);
                 
                
             
